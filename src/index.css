@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #0b0405;
+  color: #f3e8d6;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* the brick wall + ambient spotlight backdrop */
+#root {
+  background-image: var(--tw-empty, );
+}
+
+@layer components {
+  .stage-bg {
+    background-color: #0b0405;
+    background-image:
+      radial-gradient(ellipse 70% 55% at 50% -5%, rgba(255, 230, 160, 0.16), transparent 60%),
+      linear-gradient(rgba(11, 4, 5, 0.82), rgba(11, 4, 5, 0.95)),
+      repeating-linear-gradient(0deg, #2a1012 0px, #2a1012 2px, transparent 2px, transparent 44px),
+      repeating-linear-gradient(90deg, #5a2226 0px, #5a2226 86px, #2a1012 86px, #2a1012 90px);
+    background-attachment: fixed;
+  }
+
+  .panel {
+    @apply bg-night-panel/85 border border-velvet-dark/60 rounded-2xl shadow-card backdrop-blur-sm;
+  }
+
+  .panel-raise {
+    @apply bg-night-raise/90 border border-amber-dim/30 rounded-2xl shadow-card;
+  }
+
+  .neon-sign {
+    font-family: "Bebas Neue", Impact, sans-serif;
+    letter-spacing: 0.12em;
+    color: #ff5b6b;
+    text-shadow:
+      0 0 4px rgba(255, 45, 63, 0.9),
+      0 0 14px rgba(255, 45, 63, 0.6),
+      0 0 28px rgba(255, 45, 63, 0.35);
+  }
+
+  .neon-sign-cyan {
+    font-family: "Bebas Neue", Impact, sans-serif;
+    letter-spacing: 0.12em;
+    color: #6ffcfc;
+    text-shadow:
+      0 0 4px rgba(46, 230, 230, 0.9),
+      0 0 14px rgba(46, 230, 230, 0.55),
+      0 0 28px rgba(46, 230, 230, 0.3);
+  }
+
+  .chrome-text {
+    background: linear-gradient(180deg, #eef0f3 0%, #c9ccd1 45%, #8a8e95 55%, #eef0f3 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-150 select-none;
+  }
+  .btn-primary {
+    @apply btn bg-amber-hot text-night-deep px-5 py-2.5 hover:bg-amber-glow shadow-spot-sm hover:shadow-spot active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none;
+  }
+  .btn-ghost {
+    @apply btn border border-amber-dim/50 text-amber px-4 py-2 hover:bg-amber/10 active:scale-95 disabled:opacity-40;
+  }
+  .btn-red {
+    @apply btn bg-velvet text-cream px-5 py-2.5 hover:bg-velvet-light active:scale-95 disabled:opacity-40;
+  }
+
+  .field {
+    @apply w-full bg-night-deep/70 border border-amber-dim/30 rounded-xl px-4 py-3 text-cream placeholder:text-cream/35 focus:outline-none focus:border-amber/70 focus:ring-2 focus:ring-amber/20 transition;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 text-xs font-medium rounded-full px-2.5 py-1 border;
+  }
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #120608;
+}
+::-webkit-scrollbar-thumb {
+  background: #5a2226;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7a1320;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
